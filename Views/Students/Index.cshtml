@@ -1,0 +1,36 @@
+﻿@model IEnumerable<demi.Models.Student>
+
+@{
+    ViewData["Title"] = "Students List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- "Create Student" button -->
+<a href="@Url.Action("Create", "Students")" class="btn btn-success mb-3">Create Student</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>
+                    <!-- Edit button -->
+                    <a href="@Url.Action("Edit", "Students", new { id = student.Id })" class="btn btn-primary btn-sm">Edit</a>
+
+                    <!-- Delete button -->
+                    <a href="@Url.Action("Delete", "Students", new { id = student.Id })" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
